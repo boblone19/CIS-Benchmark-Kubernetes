@@ -8,14 +8,10 @@ Prcedures:
 
 On the Kubernetes master nodes,
 ```
-$ ./master.sh
+$ ./master.sh 1.15
 ```
 
 On the Kubernetes worker nodes,
 ```
-$ ./worker.sh
+$ ./worker.sh 1.15
 ```
-
-On the Kubernetes federation nodes,
-```
-$ ./federation.sh

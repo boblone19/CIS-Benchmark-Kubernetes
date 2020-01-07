@@ -132,5 +132,23 @@ fi
 
 
 check_4_1_9="4.1.9  - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+if [ -f "/var/lib/kubelet/config.yaml" ]; then
+    # kops
+    file="/var/lib/kubelet/config.yaml"
+else
+    file="/var/lib/kubelet"
+fi
+
+if [ -f "$file" ]; then
+  if [ "$(stat -c %a $file)" -eq 644 -o "$(stat -c %a $file)" -eq 600 -o "$(stat -c %a $file)" -eq 400 ]; then
+    pass "$check_4_1_9"
+  else
+    warn "$check_4_1_9"
+    warn "     * Wrong permissions for $file"
+  fi
+else
+  info "$check_4_1_9"
+  info "     * File not found"
+fi
 
 check_4_1_10="4.1.10  - Ensure that the kubelet configuration file ownership is set to root:root"

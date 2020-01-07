@@ -1,4 +1,4 @@
-# CIS Kubernetes Benchmark
+# CIS Kubernetes Benchmark Powerby QQ & BB
 
 This set of scripts can be used to check the Kubernetes installation against the best-practices.
 

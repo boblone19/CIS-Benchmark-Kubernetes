@@ -152,3 +152,13 @@ else
 fi
 
 check_4_1_10="4.1.10  - Ensure that the kubelet configuration file ownership is set to root:root"
+if [ -f "$file" ]; then
+  if [ "$(stat -c %u%g $file)" -eq 00 ]; then
+    pass "$check_4_1_10"
+  else
+    warn "$check_4_1_10"
+    warn "     * Wrong ownership for $file"
+  fi
+else
+  info "$check_4_1_10"
+fi
